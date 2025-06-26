@@ -31,11 +31,14 @@ export function DeliveryRecordsTable({ deliveries }: DeliveryRecordsTableProps) 
         <TableHeader className="bg-muted/50">
           <TableRow>
             <TableHead>OM#</TableHead>
+            <TableHead>Service Type</TableHead>
+            <TableHead>Hours</TableHead>
             <TableHead>Client</TableHead>
             <TableHead>Date</TableHead>
             <TableHead>Executive</TableHead>
             <TableHead className="text-center">Status</TableHead>
-            <TableHead className="text-right">Price</TableHead>
+            <TableHead className="text-center">Price</TableHead>
+            <TableHead className="text-center">Extra Hours</TableHead>
             <TableHead>POD Files</TableHead>
           </TableRow>
         </TableHeader>
@@ -43,6 +46,8 @@ export function DeliveryRecordsTable({ deliveries }: DeliveryRecordsTableProps) 
           {deliveries.map((delivery) => (
             <TableRow key={delivery.id}>
               <TableCell className="font-medium text-primary">{delivery.omNumber}</TableCell>
+              <TableCell className="text-muted-foreground">{delivery.serviceType}</TableCell>
+              <TableCell className="text-muted-foreground">{delivery.hours}</TableCell>
               <TableCell className="text-foreground">{delivery.client}</TableCell>
               <TableCell className="text-muted-foreground">
                 {delivery.date ? delivery.date.toDate().toLocaleDateString() : 'N/A'}
@@ -53,7 +58,14 @@ export function DeliveryRecordsTable({ deliveries }: DeliveryRecordsTableProps) 
                   {delivery.status}
                 </Badge>
               </TableCell>
-              <TableCell className="text-right text-muted-foreground">${delivery.price.toFixed(2)}</TableCell>
+              <TableCell className="text-center text-muted-foreground">${delivery.price.toFixed(2)}</TableCell>
+              <TableCell className="text-center text-muted-foreground">
+                {delivery.overtime ? (
+                  <span className="text-xs">{delivery.overtimeHours ?? 0} hrs</span>
+                ) : (
+                  <span className="text-xs text-muted-foreground">N/A</span>
+                )}
+              </TableCell>
               <TableCell>
                 {delivery.fileUrls && delivery.fileUrls.length > 0 ? (
                   <div className="flex flex-col items-start gap-1">
