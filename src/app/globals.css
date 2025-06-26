@@ -1,26 +1,114 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: var(--font-inter), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 200 56% 92%; /* #E0F0F7 */
+    --foreground: 190 30% 25%; /* Darker blue for text */
+
+    --card: 0 0% 100%; /* White cards for contrast */
+    --card-foreground: 190 30% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 190 30% 25%;
+
+    --primary: 190 30% 41%; /* #468189 */
+    --primary-foreground: 0 0% 98%; /* White/very light text on primary */
+
+    --secondary: 200 50% 85%; /* Lighter shade of background for secondary elements */
+    --secondary-foreground: 190 30% 30%;
+
+    --muted: 200 50% 88%;
+    --muted-foreground: 190 25% 45%;
+
+    --accent: 183 40% 63%; /* #71C9CE */
+    --accent-foreground: 190 30% 20%; /* Dark text on accent */
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 190 20% 75%; /* Subdued blue border */
+    --input: 0 0% 100%; /* White input background */
+    --ring: 183 40% 55%; /* Accent color for rings */
+
+    --chart-1: 190 30% 41%; /* Primary */
+    --chart-2: 183 40% 63%; /* Accent */
+    --chart-3: 200 50% 70%; 
+    --chart-4: 190 30% 60%;
+    --chart-5: 183 40% 80%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 190 25% 35%; /* Darker, desaturated blue for sidebar */
+    --sidebar-foreground: 0 0% 95%; /* Light text for sidebar */
+    --sidebar-primary: 183 40% 63%; /* Accent for active items in sidebar */
+    --sidebar-primary-foreground: 190 30% 15%; /* Dark text on sidebar primary */
+    --sidebar-accent: 190 25% 45%; /* Hover on sidebar items */
+    --sidebar-accent-foreground: 0 0% 98%; /* Text for hovered sidebar items */
+    --sidebar-border: 190 25% 30%;
+    --sidebar-ring: 183 40% 55%;
+  }
+
+  .dark {
+    --background: 190 20% 10%; /* Very dark blue */
+    --foreground: 200 50% 90%; /* Light text */
+
+    --card: 190 20% 15%;
+    --card-foreground: 200 50% 90%;
+
+    --popover: 190 20% 15%;
+    --popover-foreground: 200 50% 90%;
+
+    --primary: 183 40% 63%; /* Accent color as primary in dark mode */
+    --primary-foreground: 190 30% 15%; /* Dark text on primary */
+
+    --secondary: 190 20% 25%;
+    --secondary-foreground: 200 50% 90%;
+
+    --muted: 190 20% 20%;
+    --muted-foreground: 200 50% 70%;
+
+    --accent: 190 30% 50%; /* A lighter blue for accent */
+    --accent-foreground: 200 50% 95%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 190 20% 30%;
+    --input: 190 20% 25%;
+    --ring: 183 40% 63%;
+
+    --chart-1: 183 40% 63%; /* Primary (dark) */
+    --chart-2: 190 30% 50%; /* Accent (dark) */
+    --chart-3: 200 50% 40%;
+    --chart-4: 183 40% 40%;
+    --chart-5: 190 30% 30%;
+
+    --sidebar-background: 190 20% 8%; /* Slightly darker than main dark bg */
+    --sidebar-foreground: 200 40% 85%;
+    --sidebar-primary: 183 40% 63%;
+    --sidebar-primary-foreground: 190 30% 15%;
+    --sidebar-accent: 190 20% 20%;
+    --sidebar-accent-foreground: 200 40% 90%;
+    --sidebar-border: 190 20% 12%;
+    --sidebar-ring: 183 40% 63%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
